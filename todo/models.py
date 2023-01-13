@@ -12,7 +12,8 @@ from django.db import models
 
 class Category(models.Model):
     id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50, null=False, blank=False)    
+    name = models.CharField(max_length=50, null=False, blank=False)
+    # description = models.CharField(max_length=)
     
     class Meta:
         db_table = 'categories'
