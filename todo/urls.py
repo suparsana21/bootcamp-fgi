@@ -5,5 +5,6 @@ from todo import views
 
 
 urlpatterns = [
-    path('',views.hello_world)
+    path('category',views.category.index),
+    path('category/<id>',views.category.detail),
 ]
