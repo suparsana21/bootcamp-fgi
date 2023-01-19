@@ -63,8 +63,8 @@ def detail(request, id):
     if request.method == "PUT":
         categoryObj = Category.objects.filter(id=id).first()
         
-        body = JSONParser().parse(request)
-        
+        body = request.data
+
         categorySerializer = CategorySerializer(categoryObj, data={
             'id': body['id'],
             'name': body['name']
