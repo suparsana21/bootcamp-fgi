@@ -10,7 +10,7 @@ from todo.serializer import CategorySerializer
 def index(request):    
     if request.method == "GET":
         # Get List Data from Table categories
-        categoryObj = Category.objects.all()
+        categoryObj = Category.objects.all() # Get List Data
         
         categorySerializer = CategorySerializer(categoryObj, many=True).data
         
@@ -85,7 +85,7 @@ def detail(request, id):
     #Delete data
     if request.method == "DELETE":
         
-        categoryObj = Category.objects.filter(id=id).first()
+        categoryObj = Category.objects.filter(id=id).first() # Hanya 1 Data
         categoryObj.delete()
         
         return JsonResponse({
