@@ -22,7 +22,10 @@ class Category(models.Model):
 class Todo(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, null=False, blank=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="relasi_category")
     
     class Meta:
         db_table = 'todos'
+        
+    def get_category_name(self): 
+        return self.category.name

@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from todo.models import Category
-from todo.serializer import CategorySerializer
+from todo.serializer import CategorySerializer, CategoryShowSerializer
 
 @api_view(['GET', 'POST'])
 def index(request):    
@@ -12,7 +12,7 @@ def index(request):
         # Get List Data from Table categories
         categoryObj = Category.objects.all() # Get List Data
         
-        categorySerializer = CategorySerializer(categoryObj, many=True).data
+        categorySerializer = CategoryShowSerializer(categoryObj, many=True).data
         
         return JsonResponse({
             'category' : categorySerializer

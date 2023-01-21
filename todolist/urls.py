@@ -19,6 +19,6 @@ from django.urls import include, path
 from todo import views
 
 urlpatterns = [
-    # path('', views.index),
-    path('', include('todo.urls'))
+    path('', include('todo.urls')),
+    path('user', include('user.urls')),
 ]

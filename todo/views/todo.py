@@ -5,7 +5,10 @@ from todo.models import Todo
 
 from todo.serializer import TodoSerializer, TodoShowSerializer
 
+from rest_framework.permissions import IsAuthenticated
 class TodoList(APIView):
+    
+    permission_classes = [IsAuthenticated]
     
     def get(self, request):
         
@@ -16,7 +19,7 @@ class TodoList(APIView):
         
         if request.GET.get('category_name') is not None and request.GET.get('category_name') != "":
             todoObj = todoObj.filter(category__name__contains=request.GET.get('category_name'))
-        x         
+                 
         
         # Conditional field gt (greater than), gte (greater than equals), lt (less than), lte (less than equals)
         

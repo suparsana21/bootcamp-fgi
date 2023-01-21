@@ -12,6 +12,17 @@ class CategorySerializer(serializers.ModelSerializer):
         )
         
 
+class CategoryShowSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = (
+            'id',
+            'name',
+            'todos'
+        )
+        
+
 class TodoSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -25,7 +36,8 @@ class TodoSerializer(serializers.ModelSerializer):
 
 class TodoShowSerializer(serializers.ModelSerializer):
     
-    category = CategorySerializer()
+    # category = CategorySerializer()
+    category = serializers.StringRelatedField(source="get_category_name")
     
     class Meta:
         model = Todo
